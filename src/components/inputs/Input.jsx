@@ -1,18 +1,18 @@
-function Input({
+export function Input({
   id,
-  tipo = 'text',
+  type = 'text',
   label,
-  valor,
+  value,
   onChange,
-  placeholder = '',
-  obrigatorio = false,
-  desabilitado = false,
-  variant = ""
+  placeholder = "",
+  required = false,
+  disabled = false,
+  variant
 }) {
   const isFloating = variant === "form-floating";
 
   return (
-    <div className={isFloating ? 'form-floating mb-3' : 'mb-4'}>
+    <div className={isFloating ? 'form-floating mt-2' : 'mb-1'}>
 
       {/* fora do form-floating, label separado */}
       {!isFloating && label && (
@@ -20,14 +20,14 @@ function Input({
       )}
       
       <input
-        type={tipo}
-        className="form-control form-control-sm"
         id={id}
+        type={type}
+        className="form-control form-control-sm"
         placeholder={isFloating ? placeholder || label : placeholder} // necessário para form-floating
-        value={valor}
+        value={value}
         onChange={onChange}
-        required={obrigatorio}
-        disabled={desabilitado}
+        required={required}
+        disabled={disabled}
       />
       
       {/* label só dentro do form-floating */}
@@ -39,4 +39,4 @@ function Input({
   );
 }
 
-export default Input;
+      

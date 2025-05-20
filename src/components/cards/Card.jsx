@@ -1,7 +1,6 @@
-import Button from '../buttons/Button'
-import ButtonLink from '../buttons/ButtonLink';
+import { Button } from '../buttons/Button'
 
-function Card(
+export function Card(
     {
         titulo,
         descricao,
@@ -9,30 +8,25 @@ function Card(
         botaoLink,
         rodape
     }
-){
-    return(
+) {
+    return (
         <>
             <div className="card" style={{ width: '18rem' }}>
-                { imagem && <img src={imagem} className="card-img-top"/>}
-                
+                {imagem && <img src={imagem} className="card-img-top" />}
+
                 <div className="card-body">
                     <h5 className="card-title"> {titulo} </h5>
                     <p className="card-text small"> {descricao} </p>
-                    
-                    
-                        <ButtonLink
-                            texto = {botaoLink.texto}
-                            cor = {botaoLink.cor}
-                            tamanho={botaoLink.tamanho}
-                            href = {botaoLink.href}
-                        />
+                    <ButtonLink
+                        texto={botaoLink.texto}
+                        cor={botaoLink.cor}
+                        tamanho={botaoLink.tamanho}
+                        href={botaoLink.href}
+                    />
                 </div>
-
-                { rodape && <div className="card-footer text-muted"> {rodape} </div> }
+                {rodape && <div className="card-footer text-muted"> {rodape} </div>}
             </div>
 
         </>
     );
 }
-
-export default Card

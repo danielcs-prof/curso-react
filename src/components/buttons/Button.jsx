@@ -1,30 +1,32 @@
-function Button(
-    {
-        text,
-        variant = "primary",
-        size="btn-sm",
-        type = "button",
-        disabled = false,
-        loading = false,
-        onClick,
-        icone
-    }
-){
+export function Button({
+    text,
+    type = "button",
+    variant = "primary",
+    size = "md",
+    disabled = false,
+    loading = false,
+    onClick,
+    icone,
+    isModal = false,
+    dataBsTarget = ""
+}) {
     return (
-    <>
-        <button 
-        className={`btn btn-${variant} btn-${size}`}
-        type={type}
-        disabled = {disabled || loading}
-        onClick={onClick}
+        <button
+            type={type}
+            className={`btn btn-${variant} btn-${size} w-100`}
+            disabled={disabled || loading}
+            onClick={!isModal ? onClick : undefined}
+            {...(isModal && {
+                'data-bs-toggle': 'modal',
+                'data-bs-target': `#${dataBsTarget}`
+            })}
         >
-            {
-                loading ? ( <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>) :
-                (icone && <i className={`bi bi-${icone}`}></i>)
-            }
-            {` ${text}`}
+            {loading ? (
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+            ) : (
+                icone && <i className={`bi bi-${icone} me-1`}></i>
+            )}
+            {text}
         </button>
-    </>
     );
 }
-export default Button
